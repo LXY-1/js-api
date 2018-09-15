@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>es6默认参数</title>
+</head>
+<body style="text-align:center;">
+
+
+	   <h3>设定默认值的参数一定放在最后。</h3>
+      <button class="b1" id="d1">
+      	 不传参数，打印：
+      </button>
+      <div class="d1">
+      	
+      </div>
+      <button class="b2" id="d2">
+      	 传参数，打印：
+      </button>
+      <div class="d2">
+      	
+      </div>
+
+
+
+<script type="text/javascript">
+	 
+      var mygo = {
+      	   way:function (fun1,fun2,setting={url:'',data:'',contentType:'xxxx'}) {
+      	           if (setting.data=='') {
+      	           	     console.log('执行方法一');
+      	           	     console.log(setting);
+      	           	     return fun1('这是方法一回调')
+      	           }
+      	           else{
+      	           	  console.log('执行方法二');
+      	           	  console.log(setting);
+      	           	  return fun2('这是方法二回调');
+      	           }
+      	   }
+      }
+      document.getElementById('d1').onclick = function () {
+      	        mygo.way(function(res){
+      	        	 console.log(res);
+          	    	console.log('我是封装方法的方法1回调函数时进行处理');
+      	        },function(res){
+      	        	console.log(res);
+          	    	console.log('我是在封装方法的方法2回调函数时进行处理'); 
+      	        })  
+      }
+      document.getElementById('d2').onclick = function () {
+      	       var json = {
+      	       	    url: 'baidu.com',
+          	        data:{page:1,nums:20},//
+          	        contentType:'cccc',
+
+      	       }
+      	       mygo.way(function(res){
+      	        	 console.log(res);
+          	    	console.log('我是封装方法的方法1回调函数时进行处理');
+      	        },function(res){
+      	        	console.log(res);
+          	    	console.log('我是在封装方法的方法2回调函数时进行处理'); 
+      	        },json)  
+      }
+
+
+
+</script>
+</body>
+</html>
